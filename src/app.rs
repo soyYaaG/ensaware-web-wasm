@@ -2,6 +2,8 @@ use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
 
+use crate::pages::login::Login;
+
 #[component]
 pub fn App() -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
@@ -13,13 +15,13 @@ pub fn App() -> impl IntoView {
         <Stylesheet id="leptos" href="/pkg/ensaware-web-wasm.css"/>
 
         // sets the document title
-        <Title text="Welcome to Leptos"/>
+        <Title text="Aplicación Ensaware"/>
 
         // content for this welcome page
         <Router>
-            <main>
+            <main data-theme="night">
                 <Routes>
-                    <Route path="" view=HomePage/>
+                    <Route path="" view=Login/>
                     <Route path="/*any" view=NotFound/>
                 </Routes>
             </main>
@@ -35,8 +37,8 @@ fn HomePage() -> impl IntoView {
     let on_click = move |_| set_count.update(|count| *count += 1);
 
     view! {
-        <h1>"Welcome to Leptos!"</h1>
-        <button on:click=on_click>"Click Me: " {count}</button>
+        <h1 class="text-2xl text-green-400">"Welcome to Leptos!"</h1>
+        <button class="btn btn-primary" on:click=on_click>"Click Me: " {count}</button>
     }
 }
 
