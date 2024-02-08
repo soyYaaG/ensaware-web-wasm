@@ -2,7 +2,6 @@ use icondata::{LuFormInput, LuLogIn, TbFaceIdError};
 use leptos::*;
 use leptos_icons::Icon;
 use leptos_router::*;
-// use leptos_router::use_params_map;
 
 use crate::{
     components::alert::{Alert, AlertType, AlertTypeProps},
@@ -36,16 +35,6 @@ pub fn Login() -> impl IntoView {
         })
     };
 
-    let view: View = (move || {
-        if error().len() > 0 {
-            view! {
-                <Alert alert_props={alert} />
-            }
-        } else {
-            leptos::View::default()
-        }
-    })();
-
     view! {
         <section class="h-screen flex flex-row">
             <aside class="hidden md:flex w-1/2">
@@ -64,12 +53,18 @@ pub fn Login() -> impl IntoView {
                     <h2>"Iniciar Sesión"</h2>
                 </div>
 
-                <div class="my-4">
-                    {view}
-                </div>
+
+                <Show
+                    when=move || (error().len() > 0)
+                    fallback=|| leptos::View::default()
+                >
+                    <div class="my-4">
+                        <Alert alert_props={alert.clone()} />
+                    </div>
+                </Show>
 
                 <img
-                    alt="Logo de la Corporación Universitaria Americana."
+                    alt="Logo de la Corporación Universitaria Americana	."
                     class="mb-10 h-96 w-96"
                     src="assets/img/logo-americana.png"
                 />
