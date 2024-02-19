@@ -2,7 +2,7 @@ use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
 
-use crate::pages::login::Login;
+use crate::pages::{login::Login, token::Token};
 
 #[component]
 pub fn App() -> impl IntoView {
@@ -10,6 +10,10 @@ pub fn App() -> impl IntoView {
     provide_meta_context();
 
     view! {
+        <Html
+            lang="es"
+        />
+        <Meta name="description" content="A Leptos fan site."/>
         // injects a stylesheet into the document <head>
         // id=leptos means cargo-leptos will hot-reload this stylesheet
         <Stylesheet id="leptos" href="/pkg/ensaware-web-wasm.css"/>
@@ -22,6 +26,7 @@ pub fn App() -> impl IntoView {
             <main data-theme="night">
                 <Routes>
                     <Route path="" view=Login/>
+                    <Route path="/token" view=Token/>
                     <Route path="/*any" view=NotFound/>
                 </Routes>
             </main>

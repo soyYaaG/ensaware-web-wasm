@@ -48,7 +48,7 @@ pub fn Login() -> impl IntoView {
             <section class="flex flex-col items-center justify-center p-4 w-full md:w-1/2">
                 <h1 class="text-5xl mb-10">"Ensaware"</h1>
 
-                <div class="flex flex-row mb-10 text-3xl text-gray-700 items-center">
+                <div class="flex flex-row mb-10 text-3xl text-gray-400 items-center">
                     <Icon icon=LuFormInput class="h-8 w-8 mr-4" />
                     <h2>"Iniciar Sesión"</h2>
                 </div>
